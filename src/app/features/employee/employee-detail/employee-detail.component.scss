@@ -1,0 +1,32 @@
+@use "@angular/material" as mat;
+
+.detail-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+mat-card {
+  width: 25rem;
+  border: 1px solid rgba(128, 128, 128, 0.76);
+  background-color: hsla(0, 0%, 95%, 0.5);
+}
+
+mat-card-title {
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.label {
+  font-weight: bold;
+  min-width: 120px;
+}
