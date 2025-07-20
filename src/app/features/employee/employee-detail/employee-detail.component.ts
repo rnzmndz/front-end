@@ -3,7 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { ToolbarTitleService } from '../../../core/services/toolbar-title.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FetchEmployeeDetailsService } from '../../../core/services/fetch-employee-details.service';
-import { EmployeeResponse } from '../../../api/employee-client';
+import {
+  AddressDto,
+  ContactInformationDto,
+  EmergencyContactDto,
+  EmployeeResponse,
+} from '../../../api/employee-client';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
@@ -15,6 +20,9 @@ import { MatCardModule } from '@angular/material/card';
 export class EmployeeDetailComponent implements OnInit {
   employeeId!: string;
   employeeDetails?: EmployeeResponse;
+  address?: AddressDto;
+  contact?: ContactInformationDto;
+  emergency?: EmergencyContactDto;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +39,10 @@ export class EmployeeDetailComponent implements OnInit {
     this.fetchEmployeeDetailService.loadEmployeeDetails(this.employeeId);
     this.fetchEmployeeDetailService.employeeDetails$.subscribe((data) => {
       this.employeeDetails = data;
+
+      this.address = this.employeeDetails?.addressDto;
+      this.contact = this.employeeDetails?.contactInformationDto;
+      this.emergency = this.employeeDetails?.emergencyContactDto;
     });
   }
 }

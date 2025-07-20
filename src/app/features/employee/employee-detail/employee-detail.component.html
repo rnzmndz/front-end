@@ -28,4 +28,58 @@
       </div> -->
     </mat-card-content>
   </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title> Address </mat-card-title>
+      <div class="row">
+        <span class="label">Street</span>
+        <span class="value">{{ address?.street }}</span>
+      </div>
+      <div class="row">
+        <span class="label">City</span>
+        <span class="value">{{ address?.city }}</span>
+      </div>
+      <div class="row">
+        <span class="label">State</span>
+        <span class="value">{{ address?.state }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Zip Code</span>
+        <span class="value">{{ address?.zipCode }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title> Contact Information </mat-card-title>
+      <div class="row">
+        <span class="label">Phone</span>
+        <span class="value">{{ contact?.phoneNumber }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Email</span>
+        <span class="value">{{ contact?.email }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title> Emergency Contact</mat-card-title>
+      <div class="row">
+        <span class="label">First name</span>
+        <span class="value">{{ emergency?.firstName }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Last name</span>
+        <span class="value">{{ emergency?.lastName }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Phone number</span>
+        <span class="value">{{ emergency?.phoneNumber }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
