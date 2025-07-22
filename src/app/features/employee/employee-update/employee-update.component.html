@@ -1,0 +1,57 @@
+<form [formGroup]="employeeDetailsForm.employeeForm" class="form-container">
+  <mat-card>
+    <mat-card-title>Employee Details</mat-card-title>
+    <mat-card-content>
+      <div class="fields">
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" required />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Middle Name</mat-label>
+          <input matInput formControlName="middleName" required />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" required />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Birth Date</mat-label>
+          <input matInput formControlName="birthDate" required />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Job Title</mat-label>
+          <input matInput formControlName="jobTitle" required />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Image Url</mat-label>
+          <input matInput formControlName="imageUrl" required />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Hired Date</mat-label>
+          <input matInput formControlName="hiredDate" required />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button
+        mat-raised-button
+        color="primary"
+        *ngIf="isEditingEmployeeDetails"
+        (click)="updateEmployeeDetails()"
+      >
+        Confirm
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="toggleEmployeeDetailsEdit()"
+      >
+        <ng-container *ngIf="isEditingEmployeeDetails; else updateButton"
+          >Cancel</ng-container
+        >
+        <ng-template #updateButton>Update</ng-template>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

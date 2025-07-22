@@ -8,6 +8,22 @@ mat-sidenav {
   padding: 1rem;
 }
 
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  justify-content: space-between;
+  padding: 16px 8px;
+}
+
+.bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  button {
+    width: 100%;
+  }
+}
+
 mat-toolbar {
   position: sticky;
   top: 0;
@@ -24,9 +40,12 @@ mat-toolbar {
   font-weight: 500;
 }
 
-.logo{
+.logo {
   font-weight: bold;
   padding-bottom: 2rem;
+}
+
+.logout {
 }
 
 .menu {

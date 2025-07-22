@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "generate-api": "openapi-generator-cli generate -i http://localhost:8080/employee-service/v3/api-docs -g typescript-angular -o src/app/api/employee-client --additional-properties=ngVersion=19.2.0,providedInRoot=true"
+    "generate-employee-api": "openapi-generator-cli generate -i http://http://localhost:8080/api-docs/employee-service -g typescript-angular -o src/app/api/employee-client --additional-properties=ngVersion=19.2.0,providedInRoot=true",
+    "generate-auth-api": "openapi-generator-cli generate -i http://localhost:8080/api-docs/auth-service -g typescript-angular -o src/app/api/auth-client --additional-properties=ngVersion=19.2.0,providedInRoot=true"
   },
   "private": true,
   "dependencies": {

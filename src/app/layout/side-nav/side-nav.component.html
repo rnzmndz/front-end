@@ -1,13 +1,27 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer mode="side" opened>
     <!-- Sidebar content -->
-    <p class="logo">Employee Management</p>
-    <nav class="menu">
-      <a mat-list-item routerLink="">Home</a>
-      <a mat-list-item routerLink="/employee-create">Add Employee</a>
-      <a mat-list-item routerLink="/employee-list">Employee List</a>
-      <a mat-list-item routerLink="/sample">Sample</a>
-    </nav>
+    <div class="sidenav-content">
+      <div class="top">
+        <p class="logo">Employee Management</p>
+        <nav class="menu">
+          <a mat-list-item routerLink="/home">Home</a>
+          <a mat-list-item routerLink="/employee-create">Add Employee</a>
+          <a mat-list-item routerLink="/employee-list">Employee List</a>
+          <a mat-list-item routerLink="/sample">Sample</a>
+        </nav>
+      </div>
+      <div class="bottom">
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="toggleLogout()"
+          class="logout"
+        >
+          Log Out
+        </button>
+      </div>
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content>

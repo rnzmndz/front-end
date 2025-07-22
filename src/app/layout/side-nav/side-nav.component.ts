@@ -3,7 +3,8 @@ import { Component, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -15,7 +16,11 @@ export class SideNavComponent {
   @Input() toolbarTitle: string = 'Employee Management';
   isSmallScreen;
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.isSmallScreen = this.breakpointObserver
       .observe([Breakpoints.Handset])
       .subscribe((result) => {
@@ -27,5 +32,10 @@ export class SideNavComponent {
           }
         }
       });
+  }
+
+  toggleLogout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
