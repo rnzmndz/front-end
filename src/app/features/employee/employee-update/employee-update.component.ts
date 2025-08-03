@@ -135,6 +135,13 @@ export class EmployeeUpdateComponent implements OnInit {
     );
   }
 
+  toggleAddressEdit() {
+    this.isEditingAddress = this.toggleEdit(
+      this.addressForm.addressForm,
+      this.isEditingAddress
+    );
+  }
+
   updateEmployeeDetails() {
     // Delete first all IDs from the data object
     const dataNoId = { ...this.employeeDetail };
@@ -162,10 +169,33 @@ export class EmployeeUpdateComponent implements OnInit {
           next: (response: EmployeeResponse) => {
             console.log('Update successful', response);
             this.fetchEmployeeDetails.loadEmployeeDetails(this.employeeId);
-            this.toggleEmployeeDetailsEdit;
+            this.toggleEmployeeDetailsEdit();
           },
           error: (error) => {
             console.error('Update failed', error);
+          },
+        });
+    }
+  }
+
+  updateAddress() {
+    // Get form values
+    const formValues = this.addressForm.addressForm.value;
+
+    if (this.areObjectsEqual(this.address, formValues)) {
+      this.toggleAddressEdit();
+    } else {
+      const updatedData: AddressDto = formValues;
+
+      this.employeeService
+        .updateEmployeeAddress(this.employeeId, updatedData)
+        .subscribe({
+          next: (response: AddressDto) => {
+            this.fetchEmployeeDetails.loadEmployeeDetails(this.employeeId);
+            this.toggleAddressEdit();
+          },
+          error: (error) => {
+            console.log('Update Failed: ', error);
           },
         });
     }

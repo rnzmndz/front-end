@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { SideNavComponent } from './layout/side-nav/side-nav.component';
 import { ToolbarTitleService } from './core/services/toolbar-title.service';
-import { LoginComponent } from './layout/login/login.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
