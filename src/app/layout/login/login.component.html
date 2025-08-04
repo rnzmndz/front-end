@@ -1,7 +1,7 @@
 <!-- <p>login works!</p>
 <h2>Login Page</h2>
 <button (click)="login()">Log In</button> -->
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formGroup]="loginForm.loginForm" (ngSubmit)="submit()">
   <mat-card>
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
@@ -20,7 +20,7 @@
 
       <mat-card-actions>
         <div class="button">
-          <button type="submit" mat-button (click)="login()">Login</button>
+          <button type="submit" mat-button (click)="submit()">Login</button>
         </div>
       </mat-card-actions>
     </mat-card-content>
