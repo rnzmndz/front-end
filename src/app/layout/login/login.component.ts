@@ -33,16 +33,20 @@ export class LoginComponent {
     this.loginForm = new LoginForm(fb);
   }
 
-  // login() {
-  //   this.auth.login();
-  //   this.router.navigate(['']);
-  // }
-
-  submit() {
-    console.log(this.loginForm.getFormValues());
-    this.authService.login(this.loginForm.getFormValues());
+  async submit() {
+    try {
+      if (await this.authService.login(this.loginForm.getFormValues())) {
+        this.router.navigate(['/home']);
+      } else {
+        this.error = 'Invalid credentials';
+      }
+    } catch (err) {
+      this.error = 'Login failed. Please try again.';
+      console.error('Login error:', err);
+    }
   }
+
   @Input() error: string | null = null;
 
-  @Output() submitEM = new EventEmitter();
+  // @Output() submitEM = new EventEmitter();
 }
