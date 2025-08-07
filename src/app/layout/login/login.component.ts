@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginForm } from '../../shared/forms/login.form';
+import { decodeJwt } from '../../shared/utils/jwt-utils';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ import { LoginForm } from '../../shared/forms/login.form';
 })
 export class LoginComponent {
   loginForm: LoginForm;
+  token?: string;
 
   constructor(
     private authService: AuthService,
@@ -37,12 +39,21 @@ export class LoginComponent {
     try {
       if (await this.authService.login(this.loginForm.getFormValues())) {
         this.router.navigate(['/home']);
+        this.getTokenRoles();
       } else {
         this.error = 'Invalid credentials';
       }
     } catch (err) {
       this.error = 'Login failed. Please try again.';
       console.error('Login error:', err);
+    }
+  }
+
+  getTokenRoles() {
+    this.token = localStorage.getItem('token') ?? undefined;
+    if (this.token) {
+      const decodedToken = decodeJwt(this.token);
+      console.log(decodedToken.realm_access.roles);
     }
   }
 

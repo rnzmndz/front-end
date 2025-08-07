@@ -50,6 +50,7 @@ export class AuthService {
 
   logout(): void {
     this.loggedIn = false;
+    localStorage.removeItem('token');
     localStorage.removeItem('isLoggedIn');
   }
 }
