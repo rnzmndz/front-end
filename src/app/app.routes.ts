@@ -7,11 +7,16 @@ import { AuthGuard } from './core/guard/auth.guard';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './features/home/home.component';
 import { SideNavComponent } from './layout/side-nav/side-nav.component';
+import { RegistrationComponent } from './layout/registration/registration.component';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegistrationComponent,
   },
   {
     path: '',

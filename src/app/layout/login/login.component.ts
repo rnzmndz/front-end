@@ -48,6 +48,10 @@ export class LoginComponent {
     }
   }
 
+  register() {
+    this.router.navigate(['register']);
+  }
+
   @Input() error: string | null = null;
 
   // @Output() submitEM = new EventEmitter();
