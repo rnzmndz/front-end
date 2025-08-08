@@ -4,15 +4,18 @@ import {
   AuthRequest,
   TokenResponse,
 } from '../../api/auth-client';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  tokenResponse?: TokenResponse;
   private loggedIn = false;
 
-  constructor(private authAPI: AuthControllerService) {
+  constructor(
+    private authAPI: AuthControllerService,
+    private tokenService: TokenService
+  ) {
     const storedLogin = localStorage.getItem('isLoggedIn');
     this.loggedIn = storedLogin === 'true';
   }
@@ -30,22 +33,26 @@ export class AuthService {
         })
         .subscribe({
           next: (response: TokenResponse) => {
-            this.tokenResponse = response;
             this.loggedIn = true;
             localStorage.setItem('isLoggedIn', 'true');
-            if (this.tokenResponse?.access_token) {
-              localStorage.setItem('token', this.tokenResponse.access_token);
-            }
+            this.tokenService.setToken(response);
             console.log(this.loggedIn);
             resolve(true);
           },
           error: (err) => {
             console.log('Log in Failed ', err);
-            console.log(this.tokenResponse);
             resolve(false);
           },
         });
     });
+  }
+
+  getRoles() {
+    this.authAPI.getUserMyRoles().subscribe({
+      next: response => {
+        console.log(response);
+      }
+    })
   }
 
   logout(): void {

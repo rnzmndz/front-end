@@ -9,8 +9,17 @@
  */
 
 
+/**
+ * Authentication request containing username and password.
+ */
 export interface AuthRequest { 
+    /**
+     * User\'s login name
+     */
     username?: string;
+    /**
+     * User\'s password
+     */
     password?: string;
 }
 

@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -12,7 +12,7 @@ import { AuthService } from '../../core/services/auth.service';
   templateUrl: './side-nav.component.html',
   styleUrl: './side-nav.component.scss',
 })
-export class SideNavComponent {
+export class SideNavComponent implements OnInit {
   @Input() toolbarTitle: string = 'Employee Management';
   isSmallScreen;
 
@@ -32,6 +32,10 @@ export class SideNavComponent {
           }
         }
       });
+  }
+
+  ngOnInit(): void {
+    // this.authService.getRoles();
   }
 
   toggleLogout() {

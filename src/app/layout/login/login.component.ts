@@ -39,21 +39,12 @@ export class LoginComponent {
     try {
       if (await this.authService.login(this.loginForm.getFormValues())) {
         this.router.navigate(['/home']);
-        this.getTokenRoles();
       } else {
         this.error = 'Invalid credentials';
       }
     } catch (err) {
       this.error = 'Login failed. Please try again.';
       console.error('Login error:', err);
-    }
-  }
-
-  getTokenRoles() {
-    this.token = localStorage.getItem('token') ?? undefined;
-    if (this.token) {
-      const decodedToken = decodeJwt(this.token);
-      console.log(decodedToken.realm_access.roles);
     }
   }
 
