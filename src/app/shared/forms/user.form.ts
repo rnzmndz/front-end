@@ -10,4 +10,8 @@ export class UserForm {
       email: '',
     });
   }
+
+  static build(fb: FormBuilder){
+    return 
+  }
 }

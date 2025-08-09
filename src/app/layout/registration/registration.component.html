@@ -1,1 +1,194 @@
-<p>registration works!</p>
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="step1Form">
+    <form [formGroup]="step1Form">
+      <ng-template matStepLabel>Personal Detail</ng-template>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" required />
+        <mat-error
+          *ngIf="formGroup.get('step1.firstName')?.hasError('required')"
+        >
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" required />
+        <mat-error
+          *ngIf="formGroup.get('step1.lastName')?.hasError('required')"
+        >
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Middle Name</mat-label>
+        <input matInput formControlName="middleName" required />
+        <mat-error
+          *ngIf="formGroup.get('step1.middleName')?.hasError('required')"
+        >
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Birthday</mat-label>
+        <input matInput formControlName="birthDate" type="date" required />
+        <mat-error
+          *ngIf="formGroup.get('step1.birtDate')?.hasError('required')"
+        >
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="step2Form">
+    <form [formGroup]="step2Form">
+      <ng-template matStepLabel>Address</ng-template>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>street</mat-label>
+        <input matInput formControlName="street" required />
+        <mat-error *ngIf="formGroup.get('step2.street')?.hasError('required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city" required />
+        <mat-error *ngIf="formGroup.get('step2.city')?.hasError('required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state" required />
+        <mat-error *ngIf="formGroup.get('step2.state')?.hasError('required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Zip Code</mat-label>
+        <input matInput formControlName="zipCode" required />
+        <mat-error *ngIf="formGroup.get('step2.zipCode')?.hasError('required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext color="primary">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="step3Form">
+    <form [formGroup]="step3Form">
+      <ng-template matStepLabel>Contact</ng-template>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contact</mat-label>
+        <input matInput formControlName="phoneNumber" required />
+        <mat-error
+          *ngIf="formGroup.get('step3.phoneNumber')?.hasError('required')"
+        >
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required />
+        <mat-error *ngIf="formGroup.get('step3.email')?.hasError('required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext color="primary">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="step4Form">
+    <form [formGroup]="step4Form">
+      <ng-template matStepLabel>Emergency Contact</ng-template>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" required />
+        <mat-error
+          *ngIf="formGroup.get('step3.firstName')?.hasError('required')"
+        >
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" required />
+        <mat-error
+          *ngIf="formGroup.get('step3.lastName')?.hasError('required')"
+        >
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required />
+        <mat-error *ngIf="formGroup.get('step3.email')?.hasError('required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+    </form>
+
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-raised-button matStepperNext color="primary">Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="step5Form">
+    <form [formGroup]="step5Form">
+      <ng-template matStepLabel>Account</ng-template>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" required />
+        <mat-error
+          *ngIf="formGroup.get('step3.username')?.hasError('required')"
+        >
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" required />
+        <mat-error
+          *ngIf="formGroup.get('step3.password')?.hasError('required')"
+        >
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button (click)="submitForm()" color="primary">
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
