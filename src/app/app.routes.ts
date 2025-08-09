@@ -32,6 +32,10 @@ export const routes: Routes = [
         component: EmployeeDetailComponent,
       },
       {
+        path: 'profile/:id',
+        component: EmployeeDetailComponent,
+      },
+      {
         path: 'update/:id',
         component: EmployeeUpdateComponent,
       },

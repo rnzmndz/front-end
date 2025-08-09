@@ -5,6 +5,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
+import { FetchEmployeeDetailsService } from '../../core/services/fetch-employee-details.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -16,10 +17,14 @@ export class SideNavComponent implements OnInit {
   @Input() toolbarTitle: string = 'Employee Management';
   isSmallScreen;
 
+  firstName: string;
+  lastName: string;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private fetchEmployeeDetails: FetchEmployeeDetailsService
   ) {
     this.isSmallScreen = this.breakpointObserver
       .observe([Breakpoints.Handset])
@@ -32,10 +37,17 @@ export class SideNavComponent implements OnInit {
           }
         }
       });
+
+    this.firstName = 'Renso';
+    this.lastName = 'Mendoza';
   }
 
   ngOnInit(): void {
     // this.authService.getRoles();
+  }
+
+  toggleProfile() {
+    this.router.navigate(['/profile', userId]);
   }
 
   toggleLogout() {

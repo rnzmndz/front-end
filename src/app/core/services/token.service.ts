@@ -36,4 +36,18 @@ export class TokenService {
       JSON.stringify(this.decodedToken?.realm_access.roles)
     );
   }
+
+  getTokenName() {
+    this.decodeToken();
+    console.log(this.decodedToken?.given_name);
+    const roles = this.decodedToken;
+    localStorage.setItem(
+      'firstName',
+      JSON.stringify(this.decodedToken?.given_name)
+    );
+    localStorage.setItem(
+      'lastName',
+      JSON.stringify(this.decodedToken?.family_name)
+    );
+  }
 }
